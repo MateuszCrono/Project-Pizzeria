@@ -96,17 +96,16 @@ const { active } = require("browser-sync");
            if( acitveProduct != thisProduct.element)
             {
              activeProduct.classlist.remove('active');
-            }
+            } else {
         /* toggle active class on thisProduct.element */
         thisProduct.classlist.toggle ('active');
           }
   }
-    }
+}
+  }
   renderInMenu();
   initAccordian();
-
   }
-
 
   const app = {
     initMenu: function(){

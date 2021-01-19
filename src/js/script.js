@@ -86,7 +86,7 @@
       const clickableTrigger = thisProduct.element.querySelector(select.menuProduct.clickable);
       console.log(clickableTrigger);
       /* START: add event listener to clickable trigger on event click */
-      thisProduct.clickableTrigger.addEventListener("click", function (event) {
+      clickableTrigger.addEventListener("click", function (event) {
         /* prevent default action for event */
         event.preventDefault();
         /* find active product (product that has active class) */

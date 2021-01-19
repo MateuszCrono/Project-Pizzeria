@@ -1,6 +1,6 @@
 /* global Handlebars, utils, dataSource */ // eslint-disable-line no-unused-vars
 
-const { active } = require("browser-sync");
+// const { active } = require("browser-sync");
 
 {
   'use strict';
@@ -61,8 +61,8 @@ const { active } = require("browser-sync");
 
       thisProduct.id = id;
       thisProduct.data = data;
-
       thisProduct.renderInMenu();
+      thisProduct.initAccordion();
 
       console.log('new Product', thisProduct)
 
@@ -100,12 +100,14 @@ const { active } = require("browser-sync");
         /* toggle active class on thisProduct.element */
         thisProduct.classlist.toggle ('active');
           }
-  }
+
 }
-  }
-  renderInMenu();
-  initAccordian();
-  }
+});
+}
+}
+
+
+
 
   const app = {
     initMenu: function(){

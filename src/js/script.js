@@ -166,20 +166,19 @@
             const optionImage = thisProduct.imageWrapper.querySelector("." + paramId + "-" + optionId);
             console.log(optionImage);
               // check if the option is not default
-            if (optionSelected) {
-              if (option.default != true) {
-              price = price + option.price;
-              // optionImage.classList.add(classNames.menuProduct.imageVisible);
-              // console.log("classlist", optionImage.classList);
+              if (optionSelected) {
+                // check if the option is not default
+                if (option.default !== true) {
+                  // add option price to price variable
+                  price = price + option.price;
+                }
+              } else {
+                // check if the option is default
+                if (option.default == true) {
+                  // reduce price variable
+                  price = price - option.price;
+                }
               }
-            else { (option.default == true)
-              // check if the option is default
-                // reduce price variable
-              price = price - option.price
-              // optionImage.classList.remove(classNames.menuProduct.imageVisible);
-            }
-            thisProduct.priceElem.innerHTML = price;
-          }
               if(optionImage){
                 if (optionSelected) {
                   optionImage.classList.add(classNames.menuProduct.imageVisible)
@@ -187,17 +186,14 @@
                 else {
                   optionImage.classList.remove(classNames.menuProduct.imageVisible);
                 }
-                }
+          }
+        }
+          // update calculated price in the HTML
+          thisProduct.priceElem.innerHTML = price;
 
-      }
       }
     }
   }
-
-
-
-
-
   const app = {
     initMenu: function () {
       const thisApp = this;

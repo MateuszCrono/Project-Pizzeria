@@ -170,6 +170,7 @@
       thisProduct.dom.cartButton.addEventListener('click', function(event){
         event.preventDefault();
         thisProduct.processOrder();
+        thisProduct.addtoCart();
       });
     }
 
@@ -231,9 +232,35 @@
         }
           // update calculated price in the HTML
       }
-      price *= thisProduct.amountWidget.value;
-          console.log(thisProduct.amountWidget.value);
-          thisProduct.dom.priceElem.innerHTML = price;
+          thisProduct.priceSingle = price;
+          // price = thisProduct.priceSingle;
+          console.log('singlowy price', thisProduct.priceSingle)
+          thisProduct.price = thisProduct.priceSingle * thisProduct.amountWidget.value;
+          // console.log(thisProduct.amountWidget.value);
+          thisProduct.dom.priceElem.innerHTML = thisProduct.price;
+          console.log('totalny price', thisProduct.price);
+
+
+    }
+    addtoCart() {
+      const thisProduct = this;
+
+      app.cart.add(thisProduct);
+    }
+    prepareCartProduct() {
+      const thisProduct = this;
+
+      const productSummary = {
+      id: thisProduct.id,
+      name: thisProduct.name,
+      amount: thisProduct.amountWidget.value,
+      priceSingle : thisProduct.priceSingle,
+      price: thisProduct.price,
+      params: {}
+
+      }
+      return (productSummary);
+      console.log('productSummary', productSummary);
     }
   }
 
@@ -325,6 +352,11 @@
       thisCart.dom.toggleTrigger.addEventListener('click', function() {
           thisCart.dom.wrapper.classList.toggle(classNames.cart.wrapperActive);
       });
+  }
+    add(menuProduct) {
+    // const thisCart = this;
+
+    console.log('adding Product', menuProduct);
   }
 }
 

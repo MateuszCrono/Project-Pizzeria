@@ -204,11 +204,10 @@
           }
         }
           // update calculated price in the HTML
-          price *= thisProduct.amountWidget.value;
+      }
+      price *= thisProduct.amountWidget.value;
           console.log(thisProduct.amountWidget.value);
           thisProduct.priceElem.innerHTML = price;
-
-      }
     }
   }
 
@@ -226,6 +225,7 @@
     getElements(element) {
       const thisWidget = this;
 
+      thisWidget.value = settings.amountWidget.defaultValue;
       thisWidget.element = element;
       thisWidget.input = thisWidget.element.querySelector(select.widgets.amount.input);
       thisWidget.linkDecrease = thisWidget.element.querySelector(select.widgets.amount.linkDecrease);

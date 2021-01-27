@@ -186,7 +186,7 @@
         const thisProduct = this;
 
         // covert form to object structure e.g. { sauce: ['tomato'], toppings: ['olives', 'redPeppers']}
-        const formData = utils.serializeFormToObject(thisProduct.form);
+        const formData = utils.serializeFormToObject(thisProduct.dom.form);
         // console.log('formData', formData);
 
         // set price to default price

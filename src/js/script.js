@@ -287,8 +287,8 @@
       const thisProduct = this;
 
       const productSummary = {
-      id: thisProduct.id,
-      name: thisProduct.id,
+      id: thisProduct.data.id,
+      name: thisProduct.data.name,
       amount: thisProduct.amountWidget.value,
       priceSingle : thisProduct.priceSingle,
       price: thisProduct.price,
@@ -395,10 +395,22 @@
     const generateHTML = templates.cartProduct(menuProduct);
     const generatedDOM = utils.createDOMFromHTML(generateHTML);
     thisCart.dom.productList.appendChild(generatedDOM);
+    thisCart.products.push(menuProduct);
+    console.log('thisCard.products',thisCart.products);
 
     console.log('adding Product', menuProduct);
   }
 }
+
+// class cartProduct {
+//   constructor(menuProduct, element) {
+//     const thisCartProduct = this;
+//     thisCartProduct.id = menuProduct.id
+//     thisCartProduct.name = menuProduct.name
+//     thisCartProduct.singlePrice = menuProduct.price
+
+//   }
+// }
 
   const app = {
     initMenu: function () {

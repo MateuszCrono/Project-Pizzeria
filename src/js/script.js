@@ -381,10 +381,10 @@
       thisCart.dom.wrapper = element,
       thisCart.dom.toggleTrigger = thisCart.dom.wrapper.querySelector(select.cart.toggleTrigger)
       thisCart.dom.productList = thisCart.dom.wrapper.querySelector(select.cart.productList);
-      thisCart.dom.deliveryFee = thisCart.deliveryFee;
-      thisCart.dom.subtotalPrice = thisCart.subtotalPrice;
-      thisCart.dom.totalPrice = thisCart.totalPrice;
-      thisCart.dom.totalNumber = thisCart.totalNumber;
+      thisCart.dom.deliveryFee = thisCart.dom.wrapper.querySelector(select.cart.deliveryFee);
+      thisCart.dom.subtotalPrice = thisCart.dom.wrapper.querySelector(select.cart.subtotalPrice);
+      thisCart.dom.totalPrice = thisCart.dom.wrapper.querySelector(select.cart.totalPrice);
+      thisCart.dom.totalNumber = thisCart.dom.wrapper.querySelector(select.cart.totalNumber);
       // console.log(thisCart.dom.productList);
 
     }
@@ -416,15 +416,20 @@
     thisCart.totalNumber = 0;
     thisCart.subtotalPrice = 0;
 
+    if (thisCart.totalNumber == 0 ) {
+      thisCart.deliveryFee == 0
+    }
+
     for (let element of thisCart.products) {
       thisCart.totalNumber += element.amount
       thisCart.subtotalPrice += element.price
     }
     thisCart.totalPrice = thisCart.subtotalPrice + thisCart.deliveryFee
-    if (thisCart.totalNumber == 0 ) {
-      thisCart.deliveryFee == 0
-    }
 
+    thisCart.dom.deliveryFee.innerHTML = thisCart.deliveryFee;
+    thisCart.dom.subtotalPrice.innerHTML = thisCart.subtotalPrice;
+    thisCart.dom.totalNumber.innerHTML = thisCart.totalNumber;
+    thisCart.dom.totalPrice.innerHTML = thisCart.totalPrice;
 
     console.log('TotalNumber', thisCart.totalNumber,)
     console.log('TotalSubtotalPrice', thisCart.subtotalPrice,)
@@ -442,6 +447,7 @@ class cartProduct{
     thisCartProduct.amount = menuProduct.amount;
     thisCartProduct.getElements(element);
     thisCartProduct.initAmountWidget();
+    // thisCartProduct.initAction();
   }
   getElements(element) {
     const thisCartProduct = this;
@@ -464,8 +470,29 @@ class cartProduct{
       thisCartProduct.dom.price.innerHTML = thisCartProduct.price;
     });
   }
-}
+  // remove() {
+  //   const thisCartProduct = this;
 
+  //   const event = new CustomEvent ('remove',  {
+  //     bubbles = true,
+  //     detail: {
+  //       cartProduct: thisCartProduct,
+  //     },
+  //   });
+  //   thisCartProduct.dom.wrapper.dispatchEvent(event);
+  // }
+//   initAction() {
+//     thisProduct.dom.edit.addEventListener('click', function() {
+//       event.preventDefault;
+
+//     })
+//     thisProduct.dom.remove.addEventListener('click', function() {
+//       event.preventDefault;
+
+//     }
+//   );
+// }
+}
   const app = {
     initMenu: function () {
       const thisApp = this;

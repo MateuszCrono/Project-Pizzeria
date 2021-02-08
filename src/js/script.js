@@ -437,13 +437,13 @@
     console.log('TotalSubtotalPrice', thisCart.subtotalPrice,)
     console.log('TotalPrice', thisCart.totalPrice,)
   }
-  remove() {
+ 
+
+  remove(cartProduct) {
     const thisCart = this;
-
-
     const indexOfThisCart = thisCart.products.indexOf(cartProduct);
-    const removeValue = thisCart.products.splice(indexOfThisCart, 1);
-    thisCart.dom.wrapper.remove(removeValue);
+    thisCart.products.splice(indexOfThisCart, 1);
+    cartProduct.dom.wrapper.remove();
     thisCart.update();
   }
 }

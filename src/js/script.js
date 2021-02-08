@@ -73,6 +73,11 @@
     cart: {
       defaultDeliveryFee: 20,
     },
+    db: {
+      url: '//localhost:3131',
+      product: 'product',
+      order: 'order',
+    },
   };
 
   const templates = {
@@ -437,7 +442,7 @@
     console.log('TotalSubtotalPrice', thisCart.subtotalPrice,)
     console.log('TotalPrice', thisCart.totalPrice,)
   }
- 
+
 
   remove(cartProduct) {
     const thisCart = this;
@@ -511,13 +516,28 @@ class cartProduct{
       const thisApp = this;
       // console.log("ThisApp Data", thisApp.data);
       for (let productData in thisApp.data.products) {
-        new Product(productData, thisApp.data.products[productData]);
+        new Product(thisApp.data.products[productData].id, thisApp.data.products[productData]);
       }
     },
     initData: function () {
       const thisApp = this;
 
-      thisApp.data = dataSource;
+      thisApp.data = {};
+      const url = settings.db.url + '/' + settings.db.product;
+      fetch(url)
+      .then(function(rawResponse) {
+        return rawResponse.json();
+      })
+      .then(function(parsedResponse) {
+        console.log('parsedResposne', parsedResponse);
+
+        /*saved parsedResponse as thisApp.data.products */
+          thisApp.data.products = parsedResponse;
+        /* execute initMenu method */
+        thisApp.initMenu();
+      })
+
+
     },
     initCart: function() {
       const thisApp = this;
@@ -526,15 +546,23 @@ class cartProduct{
       thisApp.cart = new Cart(cartElem);
 
     },
-    init: function () {
+    fetch(url)
+      .then(function(rawResponse) {
+        return rawResponse.json();
+      })
+      .then(function(parsedResponse) {
+        console.log('parsedResposne', parsedResponse);
+
+        /*saved parsedResponse as thisApp.data.products */
+          thisApp.data.products = parsedResponse;
+        /* execute initMenu method */
+        thisApp.initMenu();
+      })
+
+    init: function() {
       const thisApp = this;
-      // console.log("*** App starting ***");
-      // console.log("thisApp:", thisApp);
-      // console.log("classNames:", classNames);
-      // console.log("settings:", settings);
-      // console.log("templates:", templates);
       thisApp.initData();
-      thisApp.initMenu();
+      // thisApp.initMenu();
       thisApp.initCart();
     },
   };

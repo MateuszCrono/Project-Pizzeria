@@ -545,6 +545,7 @@ class cartProduct{
       name: thisCartProduct.name,
       params: thisCartProduct.params
     }
+    return ProductData
   }
   initAction() {
     const thisCartProduct = this;

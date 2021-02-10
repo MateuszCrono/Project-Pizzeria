@@ -595,23 +595,11 @@ class cartProduct{
       thisApp.cart = new Cart(cartElem);
 
     },
-    fetch(url)
-      .then(function(rawResponse) {
-        return rawResponse.json();
-      })
-      .then(function(parsedResponse) {
-        console.log('parsedResposne', parsedResponse);
-
-        /*saved parsedResponse as thisApp.data.products */
-          thisApp.data.products = parsedResponse;
-        /* execute initMenu method */
-        thisApp.initMenu();
-      })
 
     init: function() {
       const thisApp = this;
       thisApp.initData();
-      thisApp.initMenu();
+      // thisApp.initMenu();
       thisApp.initCart();
     },
   };

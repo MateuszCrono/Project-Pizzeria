@@ -1,5 +1,5 @@
 {
-  "product": {
+  "product": [
     "cake": {
       "class": "small",
       "name": "Zio Stefano's Doughnut",
@@ -197,6 +197,6 @@
         }
       }
     }
-  },
+  ],
   "order": []
 }

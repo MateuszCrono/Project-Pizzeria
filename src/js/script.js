@@ -417,15 +417,15 @@
       })
   }
     sendOrder() {
-      thisCart = this;
+      const thisCart = this;
       const url = settings.db.url + '/' + settings.db.order;
       const payload =  {
-        address: thisCart.dom.address,
-        phone: thisCart.dom.phone,
-        totalPrice: thisCart.dom.totalPrice,
-        subTotalPrice: thisCart.dom.subtotalPrice,
-        totalNumber: thisCart.dom.totalNumber,
-        deliveryFee: thisCart.dom.deliveryFee,
+        address: thisCart.dom.address.value,
+        phone: thisCart.dom.phone.value,
+        totalPrice: thisCart.totalPrice,
+        subTotalPrice: thisCart.subtotalPrice,
+        totalNumber: thisCart.totalNumber,
+        deliveryFee: thisCart.deliveryFee,
         products: [],
       }
       for (let prod of thisCart.products) {
@@ -535,7 +535,7 @@ class cartProduct{
   }
 
   getData() {
-    thisCartProduct = this;
+    const thisCartProduct = this;
 
     const ProductData = {
       id: thisCartProduct.id,
@@ -545,7 +545,7 @@ class cartProduct{
       name: thisCartProduct.name,
       params: thisCartProduct.params
     }
-    return ProductData
+    return ProductData;
   }
   initAction() {
     const thisCartProduct = this;

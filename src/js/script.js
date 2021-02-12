@@ -545,6 +545,7 @@ class cartProduct{
       name: thisCartProduct.name,
       params: thisCartProduct.params
     }
+
     return ProductData;
   }
   initAction() {
@@ -600,10 +601,11 @@ class cartProduct{
     init: function() {
       const thisApp = this;
       thisApp.initData();
-      // thisApp.initMenu();
+      thisApp.initMenu();
       thisApp.initCart();
     },
   };
 
   app.init();
 }
+ 

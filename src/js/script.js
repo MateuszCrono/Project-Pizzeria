@@ -608,4 +608,3 @@ class cartProduct{
 
   app.init();
 }
- 

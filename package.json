@@ -11,13 +11,14 @@
         "init:gitignore:custom": "echo \"dist\" >> .gitignore",
         "test": "npm-run-all test:*",
         "test:html": "globstar nu-html-checker dist/*.html",
-        "test:js": "eslint src/js/",
-        "test:scss": "stylelint src/sass/",
+        "test:js": "eslint src/js/ --fix",
+        "test:scss": "stylelint src/sass/ --fix",
         "build": "npm-run-all build:* test",
         "build:clean": "mkdirp dist && rm -r dist && mkdirp dist",
         "build:copy": "copyfiles -a -u 1 -e \"**/sass/**/*\" -e \"**/.gitkeep\" \"src/**/*\" dist",
         "build:sass": "node-sass --output-style compact -o dist/css src/sass",
-        "build-dev": "npm-run-all build-dev:sass",
+        "build:autoprefixer": "globstar autoprefixer-cli \"dist/css/*.css\"",
+        "build-dev": "npm-run-all build-dev:sass build:autoprefixer",
         "build-dev:sass": "node-sass --output-style expanded --source-map true -o dist/css src/sass",
         "server": "json-server --port 3131 --no-cors --delay 250 --watch dist/db/app.json",
         "watch": "npm-run-all build build-dev -p watch:* server",
@@ -32,7 +33,7 @@
         "json-server": "^0.16.3"
     },
     "devDependencies": {
-
+        "autoprefixer-cli": "^1.0.0",
         "browser-sync": "^2.26.3",
         "copyfiles": "^2.1.0",
         "eslint": "^5.14.1",

@@ -1,7 +1,7 @@
 import {select} from '../settings.js';
-import AmountWidget from './AmountWidget.js';
+import {AmountWidget} from './AmountWidget.js';
 
-class cartProduct{
+export class CartProduct{
   constructor(menuProduct, element){
     const thisCartProduct = this;
     thisCartProduct.id = menuProduct.id;
@@ -12,33 +12,31 @@ class cartProduct{
     thisCartProduct.params = JSON.parse(JSON.stringify(menuProduct.params));
     thisCartProduct.getElements(element);
     thisCartProduct.initAmountWidget();
-    thisCartProduct.initAction();
+    thisCartProduct.initActions();
+    //console.log('thisCartProduct class', thisCartProduct);
   }
-  getElements(element) {
+  getElements(element){
     const thisCartProduct = this;
     thisCartProduct.dom = {};
     thisCartProduct.dom.wrapper = element;
-    thisCartProduct.dom.amount = thisCartProduct.dom.wrapper.querySelector(select.cartProduct.amountWidget);
+    thisCartProduct.dom.amountWidget = thisCartProduct.dom.wrapper.querySelector(select.cartProduct.amountWidget);
     thisCartProduct.dom.price = thisCartProduct.dom.wrapper.querySelector(select.cartProduct.price);
     thisCartProduct.dom.edit = thisCartProduct.dom.wrapper.querySelector(select.cartProduct.edit);
     thisCartProduct.dom.remove = thisCartProduct.dom.wrapper.querySelector(select.cartProduct.remove);
-
   }
   initAmountWidget() {
     const thisCartProduct = this;
 
-    thisCartProduct.amountWidget = new AmountWidget(thisCartProduct.dom.amount);
-    thisCartProduct.dom.amount.addEventListener('updated', function() {
-      event.preventDefault;
+    thisCartProduct.amountWidget = new AmountWidget( thisCartProduct.dom.amountWidget);
+    thisCartProduct.dom.amountWidget.addEventListener('updated', function () {
       thisCartProduct.amount = thisCartProduct.amountWidget.value;
       thisCartProduct.price = thisCartProduct.priceSingle * thisCartProduct.amount;
       thisCartProduct.dom.price.innerHTML = thisCartProduct.price;
     });
   }
-  remove() {
+  remove(){
     const thisCartProduct = this;
-
-    const event = new CustomEvent ('remove',  {
+    const event = new CustomEvent('remove', {
       bubbles: true,
       detail: {
         cartProduct: thisCartProduct,
@@ -46,34 +44,26 @@ class cartProduct{
     });
     thisCartProduct.dom.wrapper.dispatchEvent(event);
   }
-
-  getData() {
-    
+  initActions() {
     const thisCartProduct = this;
-
-    const ProductData = {
+    thisCartProduct.dom.edit.addEventListener('click', function (event) {
+      event.preventDefault();
+    });
+    thisCartProduct.dom.remove.addEventListener('click', function (event) {
+      event.preventDefault();
+      thisCartProduct.remove();
+    });
+  }
+  getData() {
+    const thisCartProduct = this;
+    const productData = {
       id: thisCartProduct.id,
       amount: thisCartProduct.amount,
       price: thisCartProduct.price,
       priceSingle: thisCartProduct.priceSingle,
-      name: thisCartProduct.name,
-      params: thisCartProduct.params
+      params: thisCartProduct.params,
     };
+    return productData;
 
-    return ProductData;
-  }
-  initAction() {
-    const thisCartProduct = this;
-
-    thisCartProduct.dom.edit.addEventListener('click', function() {
-      event.preventDefault;
-    });
-    thisCartProduct.dom.remove.addEventListener('click', function() {
-      event.preventDefault;
-      thisCartProduct.remove();
-      console.log(thisCartProduct.remove);
-    }
-    );
   }
 }
-export default cartProduct;

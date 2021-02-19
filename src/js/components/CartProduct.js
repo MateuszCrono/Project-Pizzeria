@@ -48,6 +48,7 @@ class cartProduct{
   }
 
   getData() {
+    
     const thisCartProduct = this;
 
     const ProductData = {

@@ -1,4 +1,4 @@
-import {Handlebars} from './utils'; 
+/* global Handlebars */
 
 
 export const select = {
@@ -80,3 +80,6 @@ export const templates = {
   menuProduct: Handlebars.compile(document.querySelector(select.templateOf.menuProduct).innerHTML),
   cartProduct: Handlebars.compile(document.querySelector(select.templateOf.cartProduct).innerHTML),
 };
+
+
+

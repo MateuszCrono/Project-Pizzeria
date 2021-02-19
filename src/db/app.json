@@ -60,9 +60,9 @@
         "<img class=\"toppings-greenPeppers\" src=\"images/pizza/green-peppers.svg\">",
         "<img class=\"toppings-mushrooms\" src=\"images/pizza/mushrooms.svg\">",
         "<img class=\"toppings-basil\" src=\"images/pizza/basil.svg\">",
-        "<img class=\"toppings-bacon\" src=\"images/pizza/bacon.svg\">",
-        "<img class=\"toppings-corn\" src=\"images/pizza/corn.svg\">",
-        "<img class=\"toppings-pineapple\" src=\"images/pizza/pineapple.svg\">"
+        // "<img class=\"toppings-bacon\" src=\"images/pizza/bacon.svg\">",
+        // "<img class=\"toppings-corn\" src=\"images/pizza/corn.svg\">",
+        // "<img class=\"toppings-pineapple\" src=\"images/pizza/pineapple.svg\">"
       ],
       "params": {
         "sauce": {

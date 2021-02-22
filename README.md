@@ -1,1 +1,0 @@
-https://dashboard.heroku.com/apps/aka-pp-1

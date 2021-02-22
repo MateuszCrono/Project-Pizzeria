@@ -1,54 +1,65 @@
-import { select, settings } from '../settings.js';
-import { BaseWidget } from './BaseWidget.js'; 
 
-export class AmountWidget extends BaseWidget {
-  constructor(wrapper) {
-    super(wrapper, settings.amountWidget.defaultValue);
+import {settings, select} from '../settings.js';
 
+class AmountWidget{
+  constructor(element) {
     const thisWidget = this;
-    thisWidget.getElements();
+    thisWidget.getElements(element);
+    thisWidget.announce();
+    thisWidget.setValue(thisWidget.input.value);
     thisWidget.initActions();
-    ////console.log('AmountWidget:', thisWidget);
-    ////console.log('constructor arguments:', element);
+    // console.log('AmountWidget', AmountWidget);
+    // console.log('constructor arguments', element);
   }
-
-  getElements() {
+  getElements(element) {
     const thisWidget = this;
 
-    thisWidget.dom.input = thisWidget.dom.wrapper.querySelector(
-      select.widgets.amount.input
-    );
-    thisWidget.dom.linkDecrease = thisWidget.dom.wrapper.querySelector(
-      select.widgets.amount.linkDecrease
-    );
-    thisWidget.dom.linkIncrease = thisWidget.dom.wrapper.querySelector(
-      select.widgets.amount.linkIncrease
-    );
+    thisWidget.value = settings.amountWidget.defaultValue;
+    thisWidget.element = element;
+    thisWidget.input = thisWidget.element.querySelector(select.widgets.amount.input);
+    thisWidget.linkDecrease = thisWidget.element.querySelector(select.widgets.amount.linkDecrease);
+    thisWidget.linkIncrease = thisWidget.element.querySelector(select.widgets.amount.linkIncrease);
   }
-
-  isValid(newValue) {
-    return !isNaN(newValue) && newValue >= settings.amountWidget.defaultMin && newValue <= settings.amountWidget.defaultMax;
-  }
-
-  renderValue() {
+  announce() {
     const thisWidget = this;
-    thisWidget.dom.input.value = thisWidget.value;
+
+    const event = new CustomEvent ('updated',  {
+      bubbles: true
+    });
+    thisWidget.element.dispatchEvent(event);
+
   }
 
+  setValue(value) {
+    const thisWidget = this;
+
+    const newValue = parseInt(value);
+
+    // TO DO ADD VALIDATION //
+    if (thisWidget.value != newValue && !isNaN(newValue) && value <= settings.amountWidget.defaultMax && value >= settings.amountWidget.defaultMin)
+    {
+      thisWidget.value = newValue;
+
+    }
+    thisWidget.announce();
+    thisWidget.input.value = thisWidget.value;
+  }
   initActions() {
     const thisWidget = this;
 
-    thisWidget.dom.input.addEventListener('change', function () {
-      thisWidget.value = thisWidget.dom.input.value;
+    thisWidget.input.addEventListener ('change', function() {
+    // event.preventDefault();
+      thisWidget.setValue(thisWidget.input.value);
     });
-    thisWidget.dom.linkDecrease.addEventListener('click', function (event) {
-      event.preventDefault;
-      --thisWidget.value;
+    thisWidget.linkIncrease.addEventListener ('click', function(event) {
+      event.preventDefault();
+      thisWidget.setValue(++thisWidget.input.value);
     });
-    thisWidget.dom.linkIncrease.addEventListener('click', function (event) {
-      event.preventDefault;
-      ++thisWidget.value;
+    thisWidget.linkDecrease.addEventListener ('click', function(event) {
+      event.preventDefault();
+      thisWidget.setValue(--thisWidget.input.value);
     });
-  }
 
+  }
 }
+export default AmountWidget;

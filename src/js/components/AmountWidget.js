@@ -4,17 +4,13 @@ import {settings, select} from '../settings.js';
 class AmountWidget{
   constructor(element) {
     const thisWidget = this;
+    thisWidget.value = settings.amountWidget.defaultValue;
     thisWidget.getElements(element);
-    thisWidget.announce();
     thisWidget.setValue(thisWidget.input.value);
     thisWidget.initActions();
-    // console.log('AmountWidget', AmountWidget);
-    // console.log('constructor arguments', element);
   }
   getElements(element) {
     const thisWidget = this;
-
-    thisWidget.value = settings.amountWidget.defaultValue;
     thisWidget.element = element;
     thisWidget.input = thisWidget.element.querySelector(select.widgets.amount.input);
     thisWidget.linkDecrease = thisWidget.element.querySelector(select.widgets.amount.linkDecrease);
@@ -22,44 +18,36 @@ class AmountWidget{
   }
   announce() {
     const thisWidget = this;
-
     const event = new CustomEvent ('updated',  {
       bubbles: true
     });
     thisWidget.element.dispatchEvent(event);
-
   }
 
   setValue(value) {
     const thisWidget = this;
-
     const newValue = parseInt(value);
-
-    // TO DO ADD VALIDATION //
-    if (thisWidget.value != newValue && !isNaN(newValue) && value <= settings.amountWidget.defaultMax && value >= settings.amountWidget.defaultMin)
+    if (thisWidget.value != newValue && !isNaN(newValue) && newValue <= settings.amountWidget.defaultMax && newValue >= settings.amountWidget.defaultMin)
     {
       thisWidget.value = newValue;
-
     }
-    thisWidget.announce();
     thisWidget.input.value = thisWidget.value;
+    thisWidget.announce();
   }
   initActions() {
     const thisWidget = this;
-
     thisWidget.input.addEventListener ('change', function() {
     // event.preventDefault();
       thisWidget.setValue(thisWidget.input.value);
     });
     thisWidget.linkIncrease.addEventListener ('click', function(event) {
       event.preventDefault();
-      thisWidget.setValue(++thisWidget.input.value);
+      thisWidget.setValue(++thisWidget.value);
     });
     thisWidget.linkDecrease.addEventListener ('click', function(event) {
       event.preventDefault();
-      thisWidget.setValue(--thisWidget.input.value);
+      thisWidget.setValue(--thisWidget.value);
     });
-
   }
 }
 export default AmountWidget;

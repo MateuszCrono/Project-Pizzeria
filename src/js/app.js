@@ -1,13 +1,60 @@
-import {settings, select} from './settings.js';
+import {settings, select, classNames} from './settings.js';
 import Product from './components/Product.js';
 import Cart from './components/Cart.js';
-// import cartProduct from './components/CartProduct.js';
-// import AmountWidget from './components/AmountWidget.js';
+import Booking from './components/booking.js';
+
 
 const app = {
+  initPages: function() {
+    const thisApp = this;
+    thisApp.pages = document.querySelector(select.containerOf.pages).children;
+    thisApp.navLinks = document.querySelectorAll(select.nav.links);
+
+    const idFromHash = window.location.hash.replace( '#/', '');
+
+    let pageMatchingHash  = thisApp.pages[0].id;
+
+    for (let page of thisApp.pages) {
+      if (page.id == idFromHash) {
+        pageMatchingHash = page.id;
+        break;
+      }
+    }
+
+    thisApp.ActivatePage(pageMatchingHash);
+
+    for (let link of thisApp.navLinks) {
+      link.addEventListener('click', function(event){
+        const clickedElement = this;
+        event.preventDefault();
+
+        /* get page Id from href attribute */
+        const id = clickedElement.getAttribute('href').replace( '#', '');
+        /* run thisApp.ActivatePage with that id */
+        thisApp.ActivatePage(id);
+        /* Change URL hash */
+        window.location.hash = '#/' + id;
+      });
+    }
+  },
+
+  ActivatePage: function (pageId) {
+    const thisApp = this;
+
+    /* add class  "active" to matching pages, remove from non-matching */
+    for(let page of thisApp.pages){
+      page.classList.toggle(classNames.pages.active, page.id == pageId);
+    }
+    /* add class  "active" to matching links, remove from non-matching */
+    for(let link of thisApp.navLinks){
+      link.classList.toggle(
+        classNames.nav.active,
+        link.getAttribute('href') == '#' + pageId
+      );
+    }
+  },
   initMenu: function () {
     const thisApp = this;
-    // console.log("ThisApp Data", thisApp.data);
     for (let productData in thisApp.data.products) {
       new Product(thisApp.data.products[productData].id, thisApp.data.products[productData]);
     }
@@ -23,8 +70,6 @@ const app = {
         return rawResponse.json();
       })
       .then(function(parsedResponse) {
-        console.log('parsedResposne', parsedResponse);
-
         /*saved parsedResponse as thisApp.data.products */
         thisApp.data.products = parsedResponse;
         /* execute initMenu method */
@@ -46,12 +91,22 @@ const app = {
     });
 
   },
+  initBooking: function() {
+    const thisApp = this;
+
+    const reserveTable = document.querySelector(select.containerOf.booking);
+
+    thisApp.booking = new Booking(reserveTable);
+
+
+  },
 
   init: function() {
     const thisApp = this;
+    thisApp.initPages();
     thisApp.initData();
-    thisApp.initMenu();
     thisApp.initCart();
+    thisApp.initBooking();
   },
 };
 app.init();

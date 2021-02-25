@@ -1,4 +1,3 @@
-
 import {select, classNames, templates} from '../settings.js';
 import {utils} from '../utils.js';
 import AmountWidget from './AmountWidget.js';
@@ -148,7 +147,6 @@ class Product {
     });
     thisProduct.element.dispatchEvent(event);
   }
-
   prepareCartProductParams() {
     const thisProduct = this;
 
@@ -192,5 +190,4 @@ class Product {
   }
 
 }
-
 export default Product;

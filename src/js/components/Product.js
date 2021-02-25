@@ -135,10 +135,9 @@ class Product {
   }
   addtoCart() {
     const thisProduct = this;
-    // app.cart.add(thisProduct.prepareCartProduct());
+    thisProduct.prepareCartProduct();
     thisProduct.name = thisProduct.data.name;
     thisProduct.amount = thisProduct.amountWidget.value;
-
     const event = new CustomEvent('add-to-cart', {
       bubbles: true,
       detail: {
@@ -147,18 +146,19 @@ class Product {
     });
     thisProduct.element.dispatchEvent(event);
   }
+
   prepareCartProductParams() {
     const thisProduct = this;
 
     // covert form to object structure e.g. { sauce: ['tomato'], toppings: ['olives', 'redPeppers']}
     const formData = utils.serializeFormToObject(thisProduct.dom.form);
     // console.log('formData', formData);
-    const params = {};
+    thisProduct.params = {};
     // for every category (param)...
     for(let paramId in thisProduct.data.params) {
       // determine param value, e.g. paramId = 'toppings', param = { label: 'Toppings', type: 'checkboxes'... }
       const param = thisProduct.data.params[paramId];
-      params[paramId] = {
+      thisProduct.params[paramId] = {
         label: param.label,
         options: {}
       };
@@ -169,12 +169,12 @@ class Product {
         const optionSelected = formData[paramId] && formData[paramId].includes(optionId);
         // console.log(optionId);
         if (optionSelected) {
-          params[paramId].options[optionId] = option.label;
+          thisProduct.params[paramId].options[optionId] = option.label;
         }
       }
     }
-    return params;
   }
+ 
   prepareCartProduct() {
     const thisProduct = this;
 

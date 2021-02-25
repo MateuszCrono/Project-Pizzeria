@@ -8,12 +8,12 @@ class BaseWidget {
     thisWidget.correctValue = initialValue;
 
   }
-  get Value() {
+  get value() {
     const thisWidget = this;
     return  thisWidget.correctValue;
   }
 
-  set Value(value) {
+  set value(value) {
     const thisWidget = this;
     const newValue = thisWidget.parseValue(value);
     if (newValue != thisWidget.correctValue  && thisWidget.isValid()){

@@ -10,7 +10,7 @@ class cartProduct{
     thisCartProduct.priceSingle = menuProduct.priceSingle;
     thisCartProduct.amount = menuProduct.amount;
     // thisCartProduct.params = JSON.parse(JSON.stringify(menuProduct.params));
-    thisCartProduct.params = menuProduct.params;
+    thisCartProduct.params = menuProduct.data.params;
     thisCartProduct.getElements(element);
     thisCartProduct.initAmountWidget();
     thisCartProduct.initAction();
@@ -27,7 +27,6 @@ class cartProduct{
   }
   initAmountWidget() {
     const thisCartProduct = this;
-
     thisCartProduct.amountWidget = new AmountWidget(thisCartProduct.dom.amountWidget);
     thisCartProduct.dom.amountWidget.addEventListener('updated', function() {
       thisCartProduct.amount = thisCartProduct.amountWidget.value;
@@ -37,7 +36,6 @@ class cartProduct{
   }
   remove() {
     const thisCartProduct = this;
-
     const event = new CustomEvent ('remove',  {
       bubbles: true,
       detail: {

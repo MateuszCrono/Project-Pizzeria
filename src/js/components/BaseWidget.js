@@ -20,7 +20,7 @@ class BaseWidget {
     }
     thisWidget.renderValue();
   }
-  parseValue(value) {
+  parseValue(newValue) {
     return parseInt(newValue);
   }
 

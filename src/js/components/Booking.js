@@ -1,4 +1,3 @@
-
 import {templates, select, settings, classNames} from '../settings.js';
 import {utils} from '../utils.js';
 import AmountWidget from './AmountWidget.js';
@@ -8,6 +7,7 @@ import HourPicker from './HourPicker.js';
 class Booking {
   constructor(reserveTable) {
     const thisBooking = this;
+
     thisBooking.render(reserveTable);
     thisBooking.initWidgets();
     thisBooking.getData();
@@ -104,6 +104,7 @@ class Booking {
 
     const minDate =  thisBooking.datePicker.minDate;
     const maxDate =  thisBooking.datePicker.maxDate;
+    console.log(minDate, maxDate);
 
 
     for (let item of eventsRepeat) {

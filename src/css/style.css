@@ -149,4 +149,9 @@ input, select { border: 1px solid #333; border-radius: 4px; padding: 12px; }
 
 .widget-amount input { width: 30px; height: 30px; text-align: center; margin: 0 6px; padding: 0; }
 
+.selected {
+  color: lightgreen;
+  
+}
+
 h1 { color: darkblue; }

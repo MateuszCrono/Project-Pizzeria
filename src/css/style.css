@@ -151,7 +151,6 @@ input, select { border: 1px solid #333; border-radius: 4px; padding: 12px; }
 
 .selected {
   color: lightgreen;
-  
 }
 
 h1 { color: darkblue; }

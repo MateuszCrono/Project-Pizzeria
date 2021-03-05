@@ -66,7 +66,7 @@ export const select = {
     form: '.booking-form',
     phone: '[name="phone"]',
     address: '[name="address"]',
-    starters: ''
+    starters: '[name="starter"]',
   },
   nav: {
     links: '.main-nav a',

@@ -1,0 +1,178 @@
+.home-wrapper {
+  margin: 40px auto;
+  padding: ($base-size * 6) ($base-size * 4);
+  border-bottom: 1px solid lighten($color-dark, 70%);
+  border-radius: $radius;
+  background-color: $color-light;
+}
+
+.row{
+  display: flex;
+  justify-content: space-between;
+
+  .box{
+    width: 300px;
+    height: 119px;
+    margin: 2.5px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    border-radius: 5px;
+
+    h3 {
+      font-family: $font-header;
+      font-size: 24px;
+      font-weight: 600;
+      padding: 0;
+      margin: 0;
+    }
+
+    p{
+      display: none;
+    }
+
+    &:hover{
+      p{
+        display: flex;
+        margin: 0;
+        font-family: $font-text;
+        font-size: 14px;
+      }
+    }
+  }
+
+  .order-online{
+    background-image: url(../images/pizza-1.jpg);
+    color: $color-light;
+    cursor: pointer;
+  }
+
+  .book-a-table{
+    background-image: url(../images/pizza-2.jpg);
+    color: $color-light;
+    cursor: pointer;
+  }
+}
+
+.open-hours{
+  width: 605px;
+  height: 128px;
+  background-color: $color-main;
+  color: $color-light;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+
+  h3{
+    font-size: 26px;
+    font-family: $font-header;
+    margin: 0;
+  }
+
+  p {
+    font-size: 14px;
+    font-family: $font-text;
+    margin: 0;
+  }
+}
+
+/* carousel */
+
+.main-carousel{
+  margin-top: 100px;
+}
+
+.carousel-cell{
+  width: 608px;
+  height: 230px;
+  display: flex;
+  font-size: 14px;
+
+  h3{
+    text-transform: uppercase;
+    font-family: $font-header;
+  }
+
+  p {
+    font-family: $font-text;
+  }
+
+  img{
+    width: 193px;
+    height: 180px;
+    margin-right: 10px;
+  }
+}
+
+.flickity-button {
+  display: none;
+}
+
+/* gallery */
+.gallery{
+  margin-top: 100px;
+  width: 604px;
+  height: 398px;
+}
+
+  .gallery-row {
+    margin: 0 0 5px 0;
+    width: 604px;
+    height: 198px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  .gallery-image {
+        display: flex;
+        position: relative;
+        margin: 0;
+        padding:0;
+    }
+
+    img {
+      width: 150px;
+      height: 150px;
+      margin: 4px;
+    }
+
+    .gallery-layer {
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      background-color: rgba(1,1,1,0.3);
+      visibility: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    i {
+      margin: 5px;
+      font-size: 20px;
+    }
+
+    i:hover{
+      color: $color-main;
+      font-size: 40px;
+      cursor: pointer;
+    }
+
+    .gallery-layer-button {
+      color: $color-light;
+      font-family: $font-text;
+    }
+
+  .gallery-image:hover {
+    .gallery-layer {
+      visibility: visible;
+    }
+ }
+

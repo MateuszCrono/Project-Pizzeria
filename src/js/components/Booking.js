@@ -98,7 +98,6 @@ class Booking {
     const thisBooking = this;
 
     thisBooking.booked = {};
-    console.log(thisBooking.booked);
 
     for (let item of bookings) {
       thisBooking.makeBooked(item.date, item.hour, item.duration, item.table);
@@ -220,14 +219,14 @@ class Booking {
           table.classList.remove('selected');
         }
       }
-      });
-        thisBooking.dom.datePicker.addEventListener('change', function () {
-          console.log('zmieniony dzien');
-          for (let table of thisBooking.dom.tables) {
-            if (table.classList.contains('booked' && 'selected')) {
-              table.classList.remove('selected');
-            }
-          }
+    });
+    thisBooking.dom.datePicker.addEventListener('change', function () {
+      console.log('zmieniony dzien');
+      for (let table of thisBooking.dom.tables) {
+        if (table.classList.contains('booked' && 'selected')) {
+          table.classList.remove('selected');
+        }
+      }
     });
     thisBooking.dom.peopleAmount.addEventListener('click', function () {
       console.log('zmieniono ilość osób');
@@ -236,18 +235,18 @@ class Booking {
           table.classList.remove('selected');
         }
       }
-  });
+    });
     thisBooking.dom.hoursAmount.addEventListener('click', function () {
-    console.log('zmieniono ilośc godzin');
-     for (let table of thisBooking.dom.tables) {
-    if (table.classList.contains('booked' && 'selected')) {
-      table.classList.remove('selected')
-    }
-  }
+      console.log('zmieniono ilośc godzin');
+      for (let table of thisBooking.dom.tables) {
+        if (table.classList.contains('booked' && 'selected')) {
+          table.classList.remove('selected');
+        }
+      }
     });
 
 
-}
+  }
   sendBooking() {
     const thisBooking = this;
     const url = settings.db.url + '/' + settings.db.booking;

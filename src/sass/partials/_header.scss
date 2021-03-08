@@ -40,6 +40,9 @@
   @include flex(row, flex-start, flex-start);
   bottom: ($base-size * -8);
 
+.home-nav {
+  
+}
   a {
     @extend .h2;
     color: $color-main;

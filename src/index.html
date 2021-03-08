@@ -8,6 +8,7 @@
   <link href="https://fonts.googleapis.com/css?family=Lato:400,300i,700%7COswald:300,500,700&amp;subset=latin-ext" rel="stylesheet">
   <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
   <link rel="stylesheet" href="vendor/range-slider.min.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -21,6 +22,7 @@
           <h2 class="logo__subtitle">the best homemade Italian food</h2>
         </div>
         <div class="main-nav">
+          <a href="#home">Home</a>
           <a href="#order">Order</a>
           <a href="#booking">Booking</a>
         </div>
@@ -61,7 +63,11 @@
     </div>
   </header>
 
+
   <div id="pages">
+    <section id="home">
+      <div class="home-wrapper container"></div>
+    </section>
     <section id="order">
       <div id="product-list" class="product-list container"></div>
     </section>
@@ -69,6 +75,116 @@
       <div class="booking-wrapper container"></div>
     </section>
   </div>
+  <script id="template-home" type="text/x-handlebars-template">
+    <div class="home">
+      <div class="row">
+        <div class="box order-online home-nav">
+        <a href="#order"><h3>ORDER ONLINE</h3>
+          <p class="description">Delicious food delivered to your door</p></a>
+
+        </div>
+        <div class="box book-a-table home-nav">
+          <a href="#booking"></a><h3>BOOK A TABLE</h3>
+          <p class="description">Reserve your table in our restaurant</p>
+          </a>
+        </div>
+      </div>
+      <div class="open-hours">
+        <h3>OPENING HOURS:</h3>
+        <p>TUE-SUN, 12PM - 12AM</p>
+      </div>
+
+      <div class="main-carousel data-flickity='{ "autoPlay": true }'">
+        <div class="carousel-cell">
+          <img src= "../../images/pizza-1.jpg" alt="pizza" class="picture">
+          <div>
+            <h3>Delicious food</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse lobortis euismod purus a egestas.</p>
+            <p class="author">Kapitanson</p>
+          </div>
+        </div>
+        <div class="carousel-cell">
+          <img src= "../../images/pizza-2.jpg" alt="pizza" class="picture">
+          <div>
+            <h3>Great venue</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse lobortis euismod purus a egestas.</p>
+            <p class="author">Kantor87</p>
+          </div>
+        </div>
+        <div class="carousel-cell">
+          <img src= "../../images/pizza-3.jpg" alt="pizza" class="picture">
+          <div>
+            <h3>Best service</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse lobortis euismod purus a egestas.</p>
+            <p class="author">HavocWingPLZG</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery">
+        <div class="gallery-row">
+          <div class="gallery-image">
+            <img src="../../images/pizza-4.jpg">
+            <div class="gallery-layer">
+              <div class="gallery-layer-button">
+                <i class="fas fa-heart"></i>
+                <i class="fas fa-share-alt"></i>
+              </div>
+            </div>
+          </div>
+          <div class="gallery-image">
+            <img src="../../images/pizza-5.jpg">
+            <div class="gallery-layer">
+              <div class="gallery-layer-button">
+                <i class="fas fa-heart"></i>
+                <i class="fas fa-share-alt"></i>
+              </div>
+            </div>
+          </div>
+          <div class="gallery-image">
+            <img src="../../images/pizza-6.jpg">
+            <div class="gallery-layer">
+              <div class="gallery-layer-button">
+                <i class="fas fa-heart"></i>
+                <i class="fas fa-share-alt"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="gallery-row">
+          <div class="gallery-image">
+            <img src="../../images/pizza-7.jpg">
+            <div class="gallery-layer">
+              <div class="gallery-layer-button">
+                <i class="fas fa-heart"></i>
+                <i class="fas fa-share-alt"></i>
+              </div>
+            </div>
+          </div>
+          <div class="gallery-image">
+            <img src="../../images/pizza-8.jpg">
+            <div class="gallery-layer">
+              <div class="gallery-layer-button">
+                <i class="fas fa-heart"></i>
+                <i class="fas fa-share-alt"></i>
+              </div>
+            </div>
+          </div>
+          <div class="gallery-image">
+            <img src="../../images/pizza-9.jpg">
+            <div class="gallery-layer">
+              <div class="gallery-layer-button">
+                <i class="fas fa-heart"></i>
+                <i class="fas fa-share-alt"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </script>
+
+
 
   <script id="template-booking-widget" type="text/x-handlebars-template">
     <div class="booking-widget">
@@ -245,6 +361,7 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
   <script src="vendor/range-slider.min.js"></script>
   <script src="js/app.js" type="module"></script>
 </body>

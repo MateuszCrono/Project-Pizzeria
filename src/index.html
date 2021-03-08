@@ -78,15 +78,15 @@
   <script id="template-home" type="text/x-handlebars-template">
     <div class="home">
       <div class="row">
-        <div class="box order-online home-nav">
-        <a href="#order"><h3>ORDER ONLINE</h3>
-          <p class="description">Delicious food delivered to your door</p></a>
+        <div class="box order-online">
+          <h3>ORDER ONLINE</h3>
+          <p class="description">Delicious food delivered to your door</p>
 
         </div>
-        <div class="box book-a-table home-nav">
-          <a href="#booking"></a><h3>BOOK A TABLE</h3>
+        <div class="box book-a-table">
+          <h3>BOOK A TABLE</h3>
           <p class="description">Reserve your table in our restaurant</p>
-          </a>
+
         </div>
       </div>
       <div class="open-hours">
@@ -337,9 +337,9 @@
             <div class="amount"> <!-- controls -->
               <div class="widget-amount"> <!-- widget-amount -->
                 <h3 class="product__params-title">Select quantity</h3>
-                <a class="btn-quantity" href="#less"><i class="fas fa-minus"></i></a>
+                <a class="btn-quantity" href="#less"><i class="fas fa-minus plusminus"></i></a>
                 <input class="amount" type="text" value="1">
-                <a class="btn-quantity" href="#more"><i class="fas fa-plus"></i></a>
+                <a class="btn-quantity" href="#more"><i class="fas fa-plus plusminus"></i></a>
               </div>
               <p class="product__total-price">
                 Total: $<span class="price">{{{ price }}}</span>

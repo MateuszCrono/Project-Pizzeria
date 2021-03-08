@@ -1,11 +1,12 @@
 import {templates, select} from '../settings.js';
+import {app} from '../app.js';
 
 class Home{
   constructor(element){
     const thisHome = this;
     thisHome.render(element);
     thisHome.initCarousel();
-    thisHome.initAction();
+    thisHome.initLink();
   }
 
   render(element){
@@ -29,16 +30,17 @@ class Home{
     });
   }
 
-  initAction(){
+  initLink(){
     const thisHome = this;
     thisHome.dom.onlineOrder.addEventListener('click', function(){
-      console.log('clicked onlineOrder');
+      app.ActivatePage('order');
+      window.location.hash = '/order';
     });
 
     thisHome.dom.bookTable.addEventListener('click', function(){
-      console.log('clicked bookTable');
+      app.ActivatePage('booking');
+      window.location.hash = '/booking';
     });
-
   }
 }
 export default Home;

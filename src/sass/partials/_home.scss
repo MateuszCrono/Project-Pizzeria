@@ -106,7 +106,7 @@
   img{
     width: 193px;
     height: 180px;
-    margin-right: 10px;
+    margin-right: 6px;
   }
 }
 
@@ -116,7 +116,7 @@
 
 /* gallery */
 .gallery{
-  margin-top: 100px;
+  margin-top: 60px;
   width: 604px;
   height: 398px;
 }
@@ -140,13 +140,13 @@
     img {
       width: 150px;
       height: 150px;
-      margin: 4px;
+      margin: 2px;
     }
 
     .gallery-layer {
       position: absolute;
-      width: 180px;
-      height: 180px;
+      width: 160px;
+      height: 160px;
       background-color: rgba(1,1,1,0.3);
       visibility: hidden;
       display: flex;
@@ -164,6 +164,11 @@
       font-size: 40px;
       cursor: pointer;
     }
+
+    // .plusminus:hover {
+    // color: white;
+    // font-size: 24px;
+    // cursor: pointer;
 
     .gallery-layer-button {
       color: $color-light;

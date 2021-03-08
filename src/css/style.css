@@ -26,13 +26,11 @@ body { margin: 0; background: #f2f2f2; font-family: "Lato", sans-serif; font-siz
 
 .btn-secondary { background: #ff6b6b; color: #fff; border-color: #ff6b6b; border-radius: 4px; transition: all 0.3s; display: inline-block; border-width: 1px; border-style: solid; padding: 12px; text-decoration: none; text-transform: uppercase; text-align: center; }
 
-.btn-secondary:hover { background: #ff7a7a; }
+/* .btn-secondary:hover { background: #ff7a7a; } */
 
 .btn-quantity { background: #333; color: #fff; border-color: #333; border-radius: 4px; transition: all 0.3s; display: inline-block; border-width: 1px; border-style: solid; padding: 12px; text-decoration: none; text-transform: uppercase; text-align: center; vertical-align: top; padding: 0; width: 30px; height: 30px; line-height: 26px; font-size: 10px; }
 
 .btn-quantity:hover { background: #3b3b3b; }
-
-.btn-quantity--lt { background: #fff; color: #ff6b6b; border-color: #fff; border-radius: 4px; transition: all 0.3s; display: inline-block; border-width: 1px; border-style: solid; padding: 12px; text-decoration: none; text-transform: uppercase; text-align: center; padding: 0; width: 24px; height: 18px; line-height: 16px; font-size: 10px; opacity: 0; }
 
 .btn-quantity--lt:hover { background: white; }
 
@@ -150,7 +148,6 @@ input, select { border: 1px solid #333; border-radius: 4px; padding: 12px; }
 .widget-amount input { width: 30px; height: 30px; text-align: center; margin: 0 6px; padding: 0; }
 
 .selected {
-  color: lightgreen;
+  background-color: lightgreen;
 }
 
-h1 { color: darkblue; }

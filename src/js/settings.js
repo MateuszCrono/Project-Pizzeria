@@ -71,8 +71,8 @@ export const select = {
     starters: '[name="starter"]',
   },
   home: {
-    onlineOrder: 'order-online',
-    bookTable: 'book-a-table',
+    onlineOrder: '.order-online',
+    bookTable: '.book-a-table',
   },
   nav: {
     links: '.main-nav a',

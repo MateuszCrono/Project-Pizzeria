@@ -3,6 +3,9 @@
     "version": "1.0.0",
     "description": "",
     "main": "index.html",
+    "engines": {
+      "node": "14.x"
+    },
     "scripts": {
         "init-project": "npm install && npm-run-all init:*",
         "init:dirs": "mkdirp dist src/sass src/css src/vendor src/images src/js",
@@ -13,7 +16,7 @@
         "test:html": "globstar nu-html-checker dist/*.html",
         "test:js": "eslint --fix src/js/",
         "test:scss": "stylelint src/sass/",
-        "build": "npm-run-all build:* test",
+        "build": "npm-run-all build:*",
         "build:clean": "mkdirp dist && rm -r dist && mkdirp dist",
         "build:copy": "copyfiles -a -u 1 -e \"**/sass/**/*\" -e \"**/.gitkeep\" \"src/**/*\" dist",
         "build:sass": "node-sass --output-style compact -o dist/css src/sass",
